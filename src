@@ -1,0 +1,51 @@
+DROP DATABASE SistemadeGerenciamentodePropriedadesImobiliárias;
+CREATE DATABASE SistemadeGerenciamentodePropriedadesImobiliárias;
+USE SistemadeGerenciamentodePropriedadesImobiliárias;
+
+CREATE TABLE Propriedades (
+     id_propriedade INT AUTO_INCREMENT PRIMARY KEY,
+     endereco VARCHAR(255) NOT NULL,
+     tipo  VARCHAR(100) NOT NULL,
+     valor DECIMAL(10,2) NOT NULL,
+     status VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Clientes (
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    tipo_interesse VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Agentes (
+    id_agente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Transacoes (
+    id_transacao INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT,
+    id_propriedade INT,
+    data_transacao VARCHAR(100) NOT NULL,
+    tipo_transacao  VARCHAR(100) NOT NULL
+);
+
+INSERT INTO Propriedades (id_propriedade, endereco, tipo, valor, status) VALUES
+(1, 'Isid Dutra,1438', 'Casa', 1500.00, 'vendido'),
+(2, 'Avenida A,1234', 'Terreno', 900.00, 'disponivel'),
+(3, 'Praça 15,5678', 'Apartamento', 1000.00, 'alugado');
+
+INSERT INTO Clientes (id_cliente, nome, telefone, email, tipo_interesse) VALUES
+(1, 'Alice Moura', '4891775898', 'alice.moura@gmail.com', 'comprar'),
+(2, 'Julia Alves', '4888311468', 'julia.alves@gmail.com', 'comprar'),
+(3, 'Betina Santos', '4812345678', 'betina.santos@gmail.com', 'alugar');
+
+INSERT INTO Agentes (id_agente, nome, telefone, email) VALUES
+(1, 'Felipe Neto', '4898765432', 'felipe.neto@gmail.com'),
+(2, 'Igor Souza', '4810111213', 'igor.souza@gmail.com'),
+(3, 'Marcia Silva', '4814151617', 'marcia.silva@gmail.com');
+
+INSERT INTO Transacoes (id_transacao,id_cliente,id_propriedade,data_transacao,tipo_transacao) VALUES
